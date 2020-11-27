@@ -15,16 +15,16 @@ public class Matrimonio {
     private int id;
     private Date fecha;
     private String lugar;
-    private Persona contrayente1;
-    private Persona contrayente2;
-    private Persona testigo1;
-    private Persona testigo2;
-    private Persona autiridadCivil;
+    private Participantes contrayente1;
+    private Participantes contrayente2;
+    private Participantes testigo1;
+    private Participantes testigo2;
+    private AutoridadCivil autiridadCivil;
 
     public Matrimonio() {
     }
 
-    public Matrimonio(int id, Date fecha, String lugar, Persona contrayente1, Persona contrayente2, Persona testigo1, Persona testigo2, Persona autiridadCivil) {
+    public Matrimonio(int id, Date fecha, String lugar, Participantes contrayente1, Participantes contrayente2, Participantes testigo1, Participantes testigo2, AutoridadCivil autiridadCivil) {
         this.id = id;
         this.fecha = fecha;
         this.lugar = lugar;
@@ -59,45 +59,46 @@ public class Matrimonio {
         this.lugar = lugar;
     }
 
-    public Persona getContrayente1() {
+    public Participantes getContrayente1() {
         return contrayente1;
     }
 
-    public void setContrayente1(Persona contrayente1) {
+    public void setContrayente1(Participantes contrayente1) {
         this.contrayente1 = contrayente1;
     }
 
-    public Persona getContrayente2() {
+    public Participantes getContrayente2() {
         return contrayente2;
     }
 
-    public void setContrayente2(Persona contrayente2) {
+    public void setContrayente2(Participantes contrayente2) {
         this.contrayente2 = contrayente2;
     }
 
-    public Persona getTestigo1() {
+    public Participantes getTestigo1() {
         return testigo1;
     }
 
-    public void setTestigo1(Persona testigo1) {
+    public void setTestigo1(Participantes testigo1) {
         this.testigo1 = testigo1;
     }
 
-    public Persona getTestigo2() {
+    public Participantes getTestigo2() {
         return testigo2;
     }
 
-    public void setTestigo2(Persona testigo2) {
+    public void setTestigo2(Participantes testigo2) {
         this.testigo2 = testigo2;
     }
 
-    public Persona getAutiridadCivil() {
+    public AutoridadCivil getAutiridadCivil() {
         return autiridadCivil;
     }
 
-    public void setAutiridadCivil(Persona autiridadCivil) {
+    public void setAutiridadCivil(AutoridadCivil autiridadCivil) {
         this.autiridadCivil = autiridadCivil;
     }
+
 
     @Override
     public int hashCode() {

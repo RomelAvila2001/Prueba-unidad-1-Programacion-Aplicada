@@ -53,9 +53,15 @@ public abstract class Controlador <T> {
        return null;
         
     }
-     
+
     public List<T> findAll() {
         return listaGenerica;
     }
+
+    public void setListaGenerica(List<T> listaGenerica) {
+        this.listaGenerica = listaGenerica;
+    }
+     
+   
     
 }

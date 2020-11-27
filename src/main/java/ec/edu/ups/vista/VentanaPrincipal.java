@@ -6,6 +6,7 @@
 package ec.edu.ups.vista;
 
 import ec.edu.ups.controlador.ControladorAutoridad;
+import ec.edu.ups.controlador.ControladorMatrimonio;
 import ec.edu.ups.controlador.ControladorPartisipantes;
 import javax.swing.JMenuItem;
 
@@ -17,10 +18,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private VentanaCrearAutoridad ventanaCrearAutoridad;
     private VentanaCrearPersona ventanaCrearPersona;
     private VentanaIniciarSesion ventanaIniciarSesion;
-    private Matrimonio matrimonio;
+    private VentanaMatrimonio matrimonio;
     
     private ControladorAutoridad controladorAutoridad;
     private ControladorPartisipantes controladorPartisipantes;
+    private ControladorMatrimonio controladorMatrimonio;
 
     /**
      * Creates new form VentanaPrincipal
@@ -30,11 +32,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
         controladorAutoridad= new ControladorAutoridad();
         controladorPartisipantes= new ControladorPartisipantes();
+        controladorMatrimonio= new ControladorMatrimonio();
         
         ventanaCrearAutoridad= new VentanaCrearAutoridad(controladorAutoridad);
         ventanaCrearPersona = new VentanaCrearPersona(controladorPartisipantes);
+        matrimonio= new VentanaMatrimonio(controladorAutoridad,controladorPartisipantes,controladorMatrimonio);
         ventanaIniciarSesion= new VentanaIniciarSesion(controladorAutoridad,this,matrimonio);
-        matrimonio= new Matrimonio();
+        
+        menuItemMatrimonio.setVisible(false);
+        menuItemCerrarSesion.setVisible(false);
     }
 
     public JMenuItem getMenuItemCerrarSesion() {
@@ -104,7 +110,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         menuItemIniciarSesion.setMnemonic('a');
         menuItemIniciarSesion.setText("Iniciar Sesion");
-        menuItemIniciarSesion.setDisplayedMnemonicIndex(5);
         menuItemIniciarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuItemIniciarSesionActionPerformed(evt);
@@ -113,6 +118,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         fileMenu.add(menuItemIniciarSesion);
 
         menuItemMatrimonio.setText("Matrimonio");
+        menuItemMatrimonio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemMatrimonioActionPerformed(evt);
+            }
+        });
         fileMenu.add(menuItemMatrimonio);
 
         menuItemCerrarSesion.setText("Cerrar Sesion");
@@ -162,7 +172,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, 632, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, 1059, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -200,6 +210,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         menuItemMatrimonio.setVisible(false);
         menuItemCerrarSesion.setVisible(false);
     }//GEN-LAST:event_menuItemCerrarSesionActionPerformed
+
+    private void menuItemMatrimonioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemMatrimonioActionPerformed
+        desktopPane.add(matrimonio);
+        matrimonio.setVisible(true);
+    }//GEN-LAST:event_menuItemMatrimonioActionPerformed
 
     /**
      * @param args the command line arguments

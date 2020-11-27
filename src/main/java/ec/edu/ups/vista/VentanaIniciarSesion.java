@@ -17,14 +17,14 @@ public class VentanaIniciarSesion extends javax.swing.JInternalFrame {
 
     private ControladorAutoridad controladorAutoridad;
     private VentanaPrincipal ventanaPrincipal;
-    private Matrimonio matrimonio;
+    private VentanaMatrimonio matrimonio;
     /**
      * Creates new form VentanaIniciarSesion
      * @param controladorAutoridad
      * @param ventanaPrincipal
      * @param matrimonio
      */
-    public VentanaIniciarSesion(ControladorAutoridad controladorAutoridad, VentanaPrincipal ventanaPrincipal, Matrimonio matrimonio) {
+    public VentanaIniciarSesion(ControladorAutoridad controladorAutoridad, VentanaPrincipal ventanaPrincipal, VentanaMatrimonio matrimonio) {
         initComponents();
         
         this.controladorAutoridad=controladorAutoridad;
@@ -49,7 +49,7 @@ public class VentanaIniciarSesion extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         txtCorreo = new javax.swing.JTextField();
         txtContra = new javax.swing.JTextField();
-        btnLogin = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setClosable(true);
 
@@ -57,12 +57,10 @@ public class VentanaIniciarSesion extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Contraseña");
 
-        btnLogin.setBackground(new java.awt.Color(0, 0, 0));
-        btnLogin.setForeground(new java.awt.Color(255, 255, 0));
-        btnLogin.setText("Iniciar Secion");
-        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLoginActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -72,20 +70,18 @@ public class VentanaIniciarSesion extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(39, 39, 39)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtCorreo)
-                            .addComponent(txtContra, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(89, 89, 89)
-                        .addComponent(btnLogin)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtCorreo)
+                    .addComponent(txtContra, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(22, 22, 22))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(132, 132, 132)
+                .addComponent(jButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -98,35 +94,36 @@ public class VentanaIniciarSesion extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtContra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(54, 54, 54)
-                .addComponent(btnLogin)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(22, 22, 22))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        AutoridadCivil a = controladorAutoridad.iniciarSesion(txtCorreo.getText(), txtContra.getText());
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        AutoridadCivil autoridad = controladorAutoridad.iniciarSesion(txtCorreo.getText(), txtContra.getText());
 
-        if (a != null) {
+        if (autoridad != null) {
+            matrimonio.setAutoridadCivil(autoridad);
             ventanaPrincipal.getMenuItemMatrimonio().setVisible(true);
             ventanaPrincipal.getMenuItemCerrarSesion().setVisible(true);
            
             ventanaPrincipal.getMenuItemRegistrarAutoridad().setVisible(false);
-            JOptionPane.showMessageDialog(this, "Bienvenido"+"  "+a.getNombre());
-            //matrimonio.setUsuario(a);
+            JOptionPane.showMessageDialog(this, "Bienvenido"+"  "+autoridad.getNombre());
+            
             limpiar();
             dispose();
             ventanaPrincipal.getMenuItemIniciarSesion().setVisible(false);
         } else {
             JOptionPane.showMessageDialog(this, "Usuario no encontrado");
         }
-    }//GEN-LAST:event_btnLoginActionPerformed
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnLogin;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField txtContra;

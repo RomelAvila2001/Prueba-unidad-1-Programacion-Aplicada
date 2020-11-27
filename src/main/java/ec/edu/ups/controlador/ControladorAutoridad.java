@@ -6,6 +6,7 @@
 package ec.edu.ups.controlador;
 
 import ec.edu.ups.modelo.AutoridadCivil;
+import ec.edu.ups.modelo.Matrimonio;
 import java.util.List;
 
 /**
