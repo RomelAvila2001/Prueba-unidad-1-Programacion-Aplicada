@@ -7,6 +7,7 @@ package ec.edu.ups.vista;
 
 import ec.edu.ups.controlador.ControladorPartisipantes;
 import ec.edu.ups.modelo.Participantes;
+import java.io.IOException;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,6 +17,7 @@ import javax.swing.JOptionPane;
 public class VentanaCrearPersona extends javax.swing.JInternalFrame {
 
     private ControladorPartisipantes controladorPartisipantes;
+    public static String ruta = "datos/Partisipantes.obj";
     /**
      * Creates new form VentanaCrearPersona
      * @param controladorPartisipantes
@@ -191,11 +193,11 @@ public class VentanaCrearPersona extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(this, "Persona registrada con exito");
                 limpiar();
                 dispose();
-               /* try {
-                    controladorAutoridad.guardarDatos(ruta);
+                try {
+                    controladorPartisipantes.guardarDatos(ruta);
                 } catch (IOException ex) {
                     JOptionPane.showMessageDialog(this, ex.getMessage());
-                }*/
+                }
                
             }
         }

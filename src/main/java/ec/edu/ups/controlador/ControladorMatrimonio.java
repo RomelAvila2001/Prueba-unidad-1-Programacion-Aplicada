@@ -6,6 +6,8 @@
 package ec.edu.ups.controlador;
 
 import ec.edu.ups.modelo.Matrimonio;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 /**
  *
@@ -13,6 +15,7 @@ import ec.edu.ups.modelo.Matrimonio;
  */
 public class ControladorMatrimonio extends Controlador<Matrimonio>{
 
+    
     @Override
     public boolean validar(Matrimonio obj) {
         if(obj.getContrayente1().getEstadoCivil().equalsIgnoreCase("Casado") && obj.getContrayente2().getEstadoCivil().equalsIgnoreCase("Casado") ){
@@ -21,4 +24,11 @@ public class ControladorMatrimonio extends Controlador<Matrimonio>{
         return true;
     }
     
+    public int cargarCodigo(){
+        if (findAll().size() > 0) {
+            return findAll().size() + 1;
+        } else {
+            return 1;
+        }
+    }
 }

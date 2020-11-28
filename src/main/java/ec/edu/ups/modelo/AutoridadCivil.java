@@ -5,14 +5,14 @@
  */
 package ec.edu.ups.modelo;
 
-import java.util.Date;
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
  *
  * @author NANCY
  */
-public class AutoridadCivil {
+public class AutoridadCivil implements Serializable {
     
     private String cargo;
     private String correo;

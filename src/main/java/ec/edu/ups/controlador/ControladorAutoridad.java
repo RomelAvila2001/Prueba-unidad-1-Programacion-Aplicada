@@ -7,6 +7,8 @@ package ec.edu.ups.controlador;
 
 import ec.edu.ups.modelo.AutoridadCivil;
 import ec.edu.ups.modelo.Matrimonio;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -14,6 +16,8 @@ import java.util.List;
  * @author NANCY
  */
 public class ControladorAutoridad extends Controlador<AutoridadCivil> {
+
+    
 
     @Override
     public boolean validar(AutoridadCivil obj) {

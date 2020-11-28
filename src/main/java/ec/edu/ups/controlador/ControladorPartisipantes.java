@@ -6,6 +6,8 @@
 package ec.edu.ups.controlador;
 
 import ec.edu.ups.modelo.Participantes;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 /**
  *
@@ -13,6 +15,7 @@ import ec.edu.ups.modelo.Participantes;
  */
 public class ControladorPartisipantes extends Controlador<Participantes> {
 
+   
     @Override
     public boolean validar(Participantes obj) {
        return true;

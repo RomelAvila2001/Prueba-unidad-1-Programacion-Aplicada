@@ -5,15 +5,16 @@
  */
 package ec.edu.ups.modelo;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  *
  * @author NANCY
  */
-public class Matrimonio {
+public class Matrimonio implements Serializable {
     private int id;
-    private Date fecha;
+    private String fecha;
     private String lugar;
     private Participantes contrayente1;
     private Participantes contrayente2;
@@ -24,7 +25,7 @@ public class Matrimonio {
     public Matrimonio() {
     }
 
-    public Matrimonio(int id, Date fecha, String lugar, Participantes contrayente1, Participantes contrayente2, Participantes testigo1, Participantes testigo2, AutoridadCivil autiridadCivil) {
+    public Matrimonio(int id, String fecha, String lugar, Participantes contrayente1, Participantes contrayente2, Participantes testigo1, Participantes testigo2, AutoridadCivil autiridadCivil) {
         this.id = id;
         this.fecha = fecha;
         this.lugar = lugar;
@@ -43,11 +44,11 @@ public class Matrimonio {
         this.id = id;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 

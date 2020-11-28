@@ -229,11 +229,11 @@ public class VentanaCrearAutoridad extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(this, "Autoridad registrada con exito");
                 limpiar();
                 dispose();
-               /* try {
+               try {
                     controladorAutoridad.guardarDatos(ruta);
                 } catch (IOException ex) {
                     JOptionPane.showMessageDialog(this, ex.getMessage());
-                }*/
+                }
                
             }
         }

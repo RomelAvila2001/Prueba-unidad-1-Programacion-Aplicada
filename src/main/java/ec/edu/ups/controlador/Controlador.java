@@ -21,11 +21,27 @@ import java.util.List;
  */
 public abstract class Controlador <T> {
     private List<T> listaGenerica;
+    private String ruta;
 
     public Controlador() {
         listaGenerica = new ArrayList<>();
+        cargarDatos();
     }
     public abstract boolean validar(T obj);
+    
+    public void cargarDatos(){
+        try{
+            FileInputStream archivo = new FileInputStream(ruta);
+            ObjectInputStream datos = new ObjectInputStream(archivo);
+            listaGenerica= (List<T>) datos.readObject();
+        }catch(ClassNotFoundException e){
+            e.printStackTrace();
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+        
+        
+    }
     
     public void guardarDatos(String ruta) throws FileNotFoundException, IOException {
         FileOutputStream archivo = new FileOutputStream(ruta);
@@ -33,11 +49,7 @@ public abstract class Controlador <T> {
         datos.writeObject(listaGenerica);
     }
     
-    public void cargarDatos(String ruta) throws FileNotFoundException, IOException, ClassNotFoundException {
-        FileInputStream archivo = new FileInputStream(ruta);
-        ObjectInputStream datos = new ObjectInputStream(archivo);
-        listaGenerica= (List<T>) datos.readObject();
-    }
+    
     
     public boolean create(T objeto) {
         if(validar(objeto)==true){  
@@ -47,11 +59,23 @@ public abstract class Controlador <T> {
     }
     
      public T read(T comp){
-        try{
-            return listaGenerica.stream().filter(objeto->objeto.equals(comp)).findFirst().get();    
-        }catch(Exception ex){} 
+        if(listaGenerica.contains(comp)){
+            return (T) listaGenerica.stream().filter(obj-> obj.equals(comp)).findFirst().get();
+        }
        return null;
         
+    }
+   
+    public void update(T obj, T Eliminar) {
+        int index = (listaGenerica.indexOf(Eliminar));
+        listaGenerica.remove(index);
+        listaGenerica.add(index, obj);
+    }
+    
+    
+    public void delete(T objeto) {
+        listaGenerica.remove(objeto);
+        System.out.println(listaGenerica);
     }
 
     public List<T> findAll() {
