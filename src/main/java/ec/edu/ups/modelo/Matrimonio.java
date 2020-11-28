@@ -25,6 +25,17 @@ public class Matrimonio implements Serializable {
     public Matrimonio() {
     }
 
+    public Matrimonio(Participantes contrayente1, Participantes contrayente2) {
+        this.contrayente1 = contrayente1;
+        this.contrayente2 = contrayente2;
+    }
+
+    public Matrimonio(int id) {
+        this.id = id;
+    }
+
+    
+    
     public Matrimonio(int id, String fecha, String lugar, Participantes contrayente1, Participantes contrayente2, Participantes testigo1, Participantes testigo2, AutoridadCivil autiridadCivil) {
         this.id = id;
         this.fecha = fecha;

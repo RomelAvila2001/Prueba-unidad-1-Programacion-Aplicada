@@ -23,8 +23,9 @@ public abstract class Controlador <T> {
     private List<T> listaGenerica;
     private String ruta;
 
-    public Controlador() {
+    public Controlador(String ruta) {
         listaGenerica = new ArrayList<>();
+        this.ruta=ruta;
         cargarDatos();
     }
     public abstract boolean validar(T obj);

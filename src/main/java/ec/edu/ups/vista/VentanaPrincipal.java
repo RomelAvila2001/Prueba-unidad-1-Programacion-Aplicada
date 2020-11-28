@@ -19,6 +19,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private VentanaCrearPersona ventanaCrearPersona;
     private VentanaIniciarSesion ventanaIniciarSesion;
     private VentanaMatrimonio matrimonio;
+    private  VentanaBuscarMatrimonio ventanaBuscarMatrimonio;
     
     private ControladorAutoridad controladorAutoridad;
     private ControladorPartisipantes controladorPartisipantes;
@@ -30,14 +31,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public VentanaPrincipal() {
         initComponents();
         
-        controladorAutoridad= new ControladorAutoridad();
-        controladorPartisipantes= new ControladorPartisipantes();
-        controladorMatrimonio= new ControladorMatrimonio();
+        controladorAutoridad= new ControladorAutoridad("datos/autoridades.obj");
+        controladorPartisipantes= new ControladorPartisipantes("datos/Partisipantes.obj");
+        controladorMatrimonio= new ControladorMatrimonio("datos/matrimonios.obj");
         
         ventanaCrearAutoridad= new VentanaCrearAutoridad(controladorAutoridad);
         ventanaCrearPersona = new VentanaCrearPersona(controladorPartisipantes);
         matrimonio= new VentanaMatrimonio(controladorAutoridad,controladorPartisipantes,controladorMatrimonio);
         ventanaIniciarSesion= new VentanaIniciarSesion(controladorAutoridad,this,matrimonio);
+        ventanaBuscarMatrimonio= new VentanaBuscarMatrimonio(controladorAutoridad, controladorPartisipantes, controladorMatrimonio);
         
         menuItemMatrimonio.setVisible(false);
         menuItemCerrarSesion.setVisible(false);
@@ -78,6 +80,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         menuItemIniciarSesion = new javax.swing.JMenuItem();
         menuItemMatrimonio = new javax.swing.JMenuItem();
         menuItemCerrarSesion = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         exitMenuItem = new javax.swing.JMenuItem();
         editMenu = new javax.swing.JMenu();
         cutMenuItem = new javax.swing.JMenuItem();
@@ -132,6 +135,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
         fileMenu.add(menuItemCerrarSesion);
+
+        jMenuItem1.setText("Buscar Matrimonio");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        fileMenu.add(jMenuItem1);
 
         exitMenuItem.setMnemonic('x');
         exitMenuItem.setText("Exit");
@@ -216,6 +227,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         matrimonio.setVisible(true);
     }//GEN-LAST:event_menuItemMatrimonioActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        desktopPane.add(ventanaBuscarMatrimonio);
+        ventanaBuscarMatrimonio.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -259,6 +275,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu editMenu;
     private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JMenu fileMenu;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem menuItemCerrarSesion;
     private javax.swing.JMenuItem menuItemIniciarSesion;

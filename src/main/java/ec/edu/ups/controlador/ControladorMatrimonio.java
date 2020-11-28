@@ -15,10 +15,15 @@ import java.io.IOException;
  */
 public class ControladorMatrimonio extends Controlador<Matrimonio>{
 
+    public ControladorMatrimonio(String ruta) {
+        super(ruta);
+    }
+
     
     @Override
     public boolean validar(Matrimonio obj) {
-        if(obj.getContrayente1().getEstadoCivil().equalsIgnoreCase("Casado") && obj.getContrayente2().getEstadoCivil().equalsIgnoreCase("Casado") ){
+        
+        if(obj.getContrayente1().getEstadoCivil().equalsIgnoreCase("Casado") || obj.getContrayente2().getEstadoCivil().equalsIgnoreCase("Casado") ){
             return false;
         }
         return true;

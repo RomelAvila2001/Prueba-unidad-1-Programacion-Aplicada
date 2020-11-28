@@ -57,7 +57,9 @@ public class VentanaIniciarSesion extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Contraseña");
 
-        jButton1.setText("jButton1");
+        jButton1.setBackground(new java.awt.Color(0, 0, 0));
+        jButton1.setForeground(new java.awt.Color(255, 255, 0));
+        jButton1.setText("Iniciar Sesion");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);

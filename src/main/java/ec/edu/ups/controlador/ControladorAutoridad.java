@@ -17,7 +17,9 @@ import java.util.List;
  */
 public class ControladorAutoridad extends Controlador<AutoridadCivil> {
 
-    
+    public ControladorAutoridad(String ruta) {
+        super(ruta);
+    }
 
     @Override
     public boolean validar(AutoridadCivil obj) {

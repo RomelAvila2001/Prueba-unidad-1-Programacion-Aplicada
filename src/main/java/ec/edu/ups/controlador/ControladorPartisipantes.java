@@ -15,6 +15,10 @@ import java.io.IOException;
  */
 public class ControladorPartisipantes extends Controlador<Participantes> {
 
+    public ControladorPartisipantes(String ruta) {
+        super(ruta);
+    }
+
    
     @Override
     public boolean validar(Participantes obj) {
